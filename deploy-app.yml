@@ -1,0 +1,11 @@
+# Create a GitHub action to email a report from a file at 6 a.m. daily
+name: Email Report
+on:
+  schedule:
+    - cron: '0 6 * * *'
+jobs:
+  send-email:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send email
+        run: echo "The report is attached" | mail -s "Daily Report" -A report.txt
